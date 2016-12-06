@@ -22,11 +22,11 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     if (this.x < 1015) {
-      this.x = Math.random() * this.speed + this.x;
+      this.x = 0.6 * this.speed + this.x;
     }
     else if (this.x >= 1015) {
       this.x = -20;
-      this.x = Math.random() * this.speed + this.x;
+      this.x = 0.6 * this.speed + this.x;
 
     }
 
@@ -105,8 +105,8 @@ var enemy3 = new Enemy(500, 100, 5);
 var enemy4 = new Enemy(100, 100, 5);
 var enemy5 = new Enemy(150, 150, 11);
 var enemy6 = new Enemy(400, 150, 11);
-var enemy7 = new Enemy(200, 200, 6);
-var enemy8 = new Enemy(600, 200, 6);
+var enemy7 = new Enemy(200, 200, 20);
+var enemy8 = new Enemy(600, 200, 20);
 
 var allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8];
 var player = new Player();
