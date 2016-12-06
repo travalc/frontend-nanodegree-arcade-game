@@ -3,7 +3,6 @@ var gameWidth = 900;
 var gameHeight = 400;
 var score = 0;
 var level = 1;
-var difficultyMultiplier = 1;
 
 function loadScore() {
   ctx.font = "30pt impact";
@@ -83,6 +82,8 @@ LeftEnemy.prototype.update = function(dt) {
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+
+
 };
 
 
@@ -102,10 +103,10 @@ var Player = function() {
 Player.prototype.update = function() {
   this.youWin();
   this.checkCollisions();
-
 };
 
 Player.prototype.youWin = function() {
+  var difficultyMultiplier = 1;
   if (this.y === 0) {
     this.resetPosition();
     score += 100;
@@ -116,6 +117,18 @@ Player.prototype.youWin = function() {
     for (var i = 0; i < allEnemies.length; i++) {
       allEnemies[i].speed = allEnemies[i].speed * difficultyMultiplier;
     }
+  }
+  if (allEnemies.indexOf(enemy2) < 0 && level === 2) {
+    allEnemies.push(enemy2);
+  }
+  if (allEnemies.indexOf(enemy4) < 0 && level === 4) {
+    allEnemies.push(enemy4);
+  }
+  if (allEnemies.indexOf(enemy6) < 0 && level === 6) {
+    allEnemies.push(enemy6);
+  }
+  if (allEnemies.indexOf(enemy8) < 0 && level === 8) {
+    allEnemies.push(enemy8);
   }
 };
 
@@ -163,7 +176,8 @@ var enemy6 = new RightEnemy(400, 150, 4);
 var enemy7 = new LeftEnemy(200, 200, 3);
 var enemy8 = new LeftEnemy(600, 200, 3);
 
-var allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8];
+var allEnemies = [enemy1, enemy3, enemy5, enemy7];
+
 var player = new Player();
 
 
