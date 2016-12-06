@@ -3,6 +3,7 @@ var gameWidth = 900;
 var gameHeight = 400;
 var score = 0;
 var level = 1;
+var difficultyMultiplier = 1;
 
 function loadScore() {
   ctx.font = "30pt impact";
@@ -109,7 +110,12 @@ Player.prototype.youWin = function() {
     this.resetPosition();
     score += 100;
     level ++;
+    difficultyMultiplier += 0.1;
+    console.log(difficultyMultiplier);
     console.log("YOU WIN! Score: " + score);
+    for (var i = 0; i < allEnemies.length; i++) {
+      allEnemies[i].speed = allEnemies[i].speed * difficultyMultiplier;
+    }
   }
 };
 
@@ -148,14 +154,14 @@ Player.prototype.handleInput = function(direction) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var enemy1 = new RightEnemy(50, 50, 17);
-var enemy2 = new RightEnemy(700, 50, 17);
-var enemy3 = new LeftEnemy(500, 100, 5);
-var enemy4 = new LeftEnemy(100, 100, 5);
-var enemy5 = new RightEnemy(150, 150, 11);
-var enemy6 = new RightEnemy(400, 150, 11);
-var enemy7 = new LeftEnemy(200, 200, 20);
-var enemy8 = new LeftEnemy(600, 200, 20);
+var enemy1 = new RightEnemy(50, 50, 4);
+var enemy2 = new RightEnemy(700, 50, 4);
+var enemy3 = new LeftEnemy(500, 100, 3);
+var enemy4 = new LeftEnemy(100, 100, 3);
+var enemy5 = new RightEnemy(150, 150, 4);
+var enemy6 = new RightEnemy(400, 150, 4);
+var enemy7 = new LeftEnemy(200, 200, 3);
+var enemy8 = new LeftEnemy(600, 200, 3);
 
 var allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8];
 var player = new Player();
