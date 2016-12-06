@@ -1,5 +1,5 @@
 // Enemies our player must avoid
-var gameWidth = 400;
+var gameWidth = 900;
 var gameHeight = 400;
 var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
@@ -21,10 +21,10 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    if (this.x < 510) {
+    if (this.x < 1015) {
       this.x = Math.random() * this.speed + this.x;
     }
-    else if (this.x >= 510) {
+    else if (this.x >= 1015) {
       this.x = -20;
       this.x = Math.random() * this.speed + this.x;
 
@@ -45,8 +45,8 @@ Enemy.prototype.render = function() {
 
 var Player = function() {
   this.sprite = 'images/char-boy.png';
-  this.x = 200;
-  this.y = 400;
+  this.x = gameWidth / 2;
+  this.y = gameHeight;
   this.width = 50;
   this.height = 50;
 };
@@ -74,8 +74,8 @@ Player.prototype.checkCollisions = function() {
 };
 
 Player.prototype.resetPosition = function() {
-  this.x = 200;
-  this.y = 400;
+  this.x = gameWidth / 2;
+  this.y = gameHeight;
 };
 
 Player.prototype.render = function() {
@@ -100,11 +100,15 @@ Player.prototype.handleInput = function(direction) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var enemy1 = new Enemy(50, 50, 17);
-var enemy2 = new Enemy(300, 100, 5);
-var enemy3 = new Enemy(150, 150, 11);
-var enemy4 = new Enemy(200, 200, 6);
+var enemy2 = new Enemy(700, 50, 17);
+var enemy3 = new Enemy(500, 100, 5);
+var enemy4 = new Enemy(100, 100, 5);
+var enemy5 = new Enemy(150, 150, 11);
+var enemy6 = new Enemy(400, 150, 11);
+var enemy7 = new Enemy(200, 200, 6);
+var enemy8 = new Enemy(600, 200, 6);
 
-var allEnemies = [enemy1, enemy2, enemy3, enemy4];
+var allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8];
 var player = new Player();
 
 
