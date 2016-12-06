@@ -36,9 +36,20 @@ var Enemy = function(x, y, speed) {
     this.height = 50;
 };
 
+var RightEnemy = function(x, y, speed) {
+  Enemy.call(this, x, y, speed);
+};
+RightEnemy.prototype = Object.create(Enemy.prototype);
+RightEnemy.prototype.constructor = RightEnemy;
+
+var LeftEnemy = function(x, y, speed) {
+  Enemy.call(this, x, y, speed);
+};
+LeftEnemy.prototype = Object.create(Enemy.prototype);
+LeftEnemy.prototype.constructor = LeftEnemy;
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt) {
+RightEnemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
@@ -48,6 +59,21 @@ Enemy.prototype.update = function(dt) {
     else if (this.x >= 1015) {
       this.x = -20;
       this.x = 0.6 * this.speed + this.x;
+
+    }
+
+};
+
+LeftEnemy.prototype.update = function(dt) {
+    // You should multiply any movement by the dt parameter
+    // which will ensure the game runs at the same speed for
+    // all computers.
+    if (this.x > -40) {
+      this.x = this.x - 0.6 * this.speed;
+    }
+    else if (this.x <= -40) {
+      this.x = 1015;
+      this.x = this.x - 0.6 * this.speed;
 
     }
 
@@ -122,14 +148,14 @@ Player.prototype.handleInput = function(direction) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var enemy1 = new Enemy(50, 50, 17);
-var enemy2 = new Enemy(700, 50, 17);
-var enemy3 = new Enemy(500, 100, 5);
-var enemy4 = new Enemy(100, 100, 5);
-var enemy5 = new Enemy(150, 150, 11);
-var enemy6 = new Enemy(400, 150, 11);
-var enemy7 = new Enemy(200, 200, 20);
-var enemy8 = new Enemy(600, 200, 20);
+var enemy1 = new RightEnemy(50, 50, 17);
+var enemy2 = new RightEnemy(700, 50, 17);
+var enemy3 = new LeftEnemy(500, 100, 5);
+var enemy4 = new LeftEnemy(100, 100, 5);
+var enemy5 = new RightEnemy(150, 150, 11);
+var enemy6 = new RightEnemy(400, 150, 11);
+var enemy7 = new LeftEnemy(200, 200, 20);
+var enemy8 = new LeftEnemy(600, 200, 20);
 
 var allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8];
 var player = new Player();
