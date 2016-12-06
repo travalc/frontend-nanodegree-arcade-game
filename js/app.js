@@ -1,6 +1,27 @@
 // Enemies our player must avoid
 var gameWidth = 900;
 var gameHeight = 400;
+var score = 0;
+var level = 1;
+
+function loadScore() {
+  ctx.font = "30pt impact";
+  ctx.fillStyle = "white";
+  ctx.strokeStyle = "black";
+  ctx.lineWidth = 3;
+  ctx.fillText("SCORE:" + " " + score, 800, 540);
+  ctx.strokeText("SCORE:" + " " + score, 800, 540);
+};
+
+function loadLevel() {
+  ctx.font = "30pt impact";
+  ctx.fillStyle = "white";
+  ctx.strokeStyle = "black";
+  ctx.lineWidth = 3;
+  ctx.fillText("LEVEL:" + " " + level, 20, 540);
+  ctx.strokeText("LEVEL:" + " " + level, 20, 540);
+}
+
 var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -60,7 +81,9 @@ Player.prototype.update = function() {
 Player.prototype.youWin = function() {
   if (this.y === 0) {
     this.resetPosition();
-    console.log("YOU WIN!");
+    score += 100;
+    level ++;
+    console.log("YOU WIN! Score: " + score);
   }
 };
 
