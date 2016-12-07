@@ -1,3 +1,6 @@
+// This file creates the Player and Enemy classes and subclasses, defines their methods, instantiates them and assigns controls.
+// Created by Travis Alcantara. Updated on 12/7/2016
+
 var GAME_WIDTH = 900;
 var GAME_HEIGHT = 400;
 var score = 0;
