@@ -1,0 +1,6 @@
+{
+  "name": "Frontend-nanodegree-arcade-game",
+  "tagline": "",
+  "body": "#Arcade Game\r\n===============================\r\n\r\n##How To Start The game\r\n\r\n1. Load the URL into your browser.\r\n2. Have Fun!\r\n\r\n##How To Play The game\r\n\r\n* Move your player avatar from the start point to the water to score and advance to the next level.\r\n* Each time you reach the water and advance you score 100 points. Shoot for the high score!\r\n* If you are hit by an enemy bug, you must restart at the starting position.\r\n* As you advance in levels, the game gets more difficult. Bug speed and quantity gradually increases.\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
