@@ -105,7 +105,7 @@ Player.prototype.youWin = function() { // Checks if player has reached the water
         score += 100; // Adds to the score
         level++; // Increases current level
         difficultyMultiplier += 0.1; // Increases difficulty
-        for (var i = 0; i < allEnemies.length; i++) {
+        for (var i = 0, len = allEnemies.length; i < len; i++) {
             allEnemies[i].speed = allEnemies[i].speed * difficultyMultiplier; // Increases speed of enemies as difficulty increases
         }
     }
