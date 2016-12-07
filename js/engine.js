@@ -152,8 +152,8 @@ var Engine = (function(global) {
         });
 
         player.render();
-        loadScore();
-        loadLevel();
+        loadScore(); // Calls loadScore function to repeatedly animate the score
+        loadLevel(); // Calls loadLevel function to repeatedly animate current level
     }
 
     /* This function does nothing but it could have been a good place to
