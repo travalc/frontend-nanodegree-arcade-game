@@ -1,5 +1,5 @@
-var gameWidth = 900;
-var gameHeight = 400;
+var GAME_WIDTH = 900;
+var GAME_HEIGHT = 400;
 var score = 0;
 var level = 1;
 
@@ -87,8 +87,8 @@ Enemy.prototype.render = function() {
 
 var Player = function() { // Create Player class
     this.sprite = 'images/char-boy.png';
-    this.x = gameWidth / 2;
-    this.y = gameHeight;
+    this.x = GAME_WIDTH / 2;
+    this.y = GAME_HEIGHT;
     this.width = 50;
     this.height = 50;
 };
@@ -133,8 +133,8 @@ Player.prototype.checkCollisions = function() { // This function checks if playe
 };
 
 Player.prototype.resetPosition = function() { // Resets player to start position
-    this.x = gameWidth / 2;
-    this.y = gameHeight;
+    this.x = GAME_WIDTH / 2;
+    this.y = GAME_HEIGHT;
 };
 
 Player.prototype.render = function() {
@@ -145,13 +145,13 @@ Player.prototype.handleInput = function(direction) {
     if (direction === 'left' && this.x > 0) {
         this.x = this.x - 50;
     }
-    if (direction === 'right' && this.x < gameWidth) {
+    if (direction === 'right' && this.x < GAME_WIDTH) {
         this.x = this.x + 50;
     }
     if (direction === 'up' && this.y > 0) {
         this.y = this.y - 50;
     }
-    if (direction === 'down' && this.y < gameHeight) {
+    if (direction === 'down' && this.y < GAME_HEIGHT) {
         this.y = this.y + 50;
     }
 };
