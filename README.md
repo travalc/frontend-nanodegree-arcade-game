@@ -3,7 +3,7 @@
 
 ##How To Start The game
 
-1. Load the URL into your browser.
+1. Open index.html in your browser.
 2. Have Fun!
 
 ##How To Play The game

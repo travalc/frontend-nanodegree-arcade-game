@@ -24,19 +24,29 @@ function loadLevel() { // Draws the current level on the bottom left
     ctx.strokeText("LEVEL:" + " " + level, 20, 540);
 }
 
-var Enemy = function(x, y, speed) { //Enemy superclass
+var Character = function() { // Create Character superclass
+  this.width = 50;
+  this.height = 50;
+};
+
+Character.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+
+var Enemy = function(x, y, speed) { // Enemy subclass
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
+    Character.call(this);
     this.x = x;
     this.y = y;
     this.speed = speed;
     this.sprite = 'images/enemy-bug.png';
-    this.width = 50;
-    this.height = 50;
 };
+Enemy.prototype = Object.create(Character.prototype);
 
 var RightEnemy = function(x, y, speed) { // Right moving enemy subclass
     Enemy.call(this, x, y, speed);
@@ -78,9 +88,7 @@ LeftEnemy.prototype.update = function(dt) { //Moves LeftEnemy class enemies to t
 };
 
 // Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
+
 
 
 
@@ -89,12 +97,13 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 
 var Player = function() { // Create Player class
+    Character.call(this);
     this.sprite = 'images/char-boy.png';
     this.x = GAME_WIDTH / 2;
     this.y = GAME_HEIGHT;
-    this.width = 50;
-    this.height = 50;
 };
+
+Player.prototype = Object.create(Character.prototype);
 
 Player.prototype.update = function() {
     this.youWin();
@@ -138,10 +147,6 @@ Player.prototype.checkCollisions = function() { // This function checks if playe
 Player.prototype.resetPosition = function() { // Resets player to start position
     this.x = GAME_WIDTH / 2;
     this.y = GAME_HEIGHT;
-};
-
-Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 Player.prototype.handleInput = function(direction) {
