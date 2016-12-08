@@ -1,6 +1,5 @@
 // This file creates the Player and Enemy classes and subclasses, defines their methods, instantiates them and assigns controls.
 // Created by Travis Alcantara. Updated on 12/7/2016
-
 var GAME_WIDTH = 900;
 var GAME_HEIGHT = 400;
 var score = 0;
@@ -25,8 +24,8 @@ function loadLevel() { // Draws the current level on the bottom left
 }
 
 var Character = function() { // Create Character superclass
-  this.width = 50;
-  this.height = 50;
+    this.width = 50;
+    this.height = 50;
 };
 
 Character.prototype.render = function() {
@@ -35,11 +34,6 @@ Character.prototype.render = function() {
 
 
 var Enemy = function(x, y, speed) { // Enemy subclass
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
     Character.call(this);
     this.x = x;
     this.y = y;
@@ -59,12 +53,7 @@ var LeftEnemy = function(x, y, speed) { // Left moving enemy subclass
 };
 LeftEnemy.prototype = Object.create(Enemy.prototype);
 LeftEnemy.prototype.constructor = LeftEnemy;
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
 RightEnemy.prototype.update = function(dt) { // Moves RightEnemy class enemies to the right
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
     if (this.x < 1015) {
         this.x = (dt * this.speed * 10) + this.x;
     } else if (this.x >= 1015) {
@@ -76,9 +65,6 @@ RightEnemy.prototype.update = function(dt) { // Moves RightEnemy class enemies t
 };
 
 LeftEnemy.prototype.update = function(dt) { //Moves LeftEnemy class enemies to the left
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
     if (this.x > -40) {
         this.x = this.x - (dt * this.speed * 10);
     } else if (this.x <= -40) {
@@ -86,15 +72,6 @@ LeftEnemy.prototype.update = function(dt) { //Moves LeftEnemy class enemies to t
         this.x = this.x - (dt * this.speed * 10);
     }
 };
-
-// Draw the enemy on the screen, required method for game
-
-
-
-
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
 
 var Player = function() { // Create Player class
     Character.call(this);
@@ -163,9 +140,7 @@ Player.prototype.handleInput = function(direction) {
         this.y = this.y + 50;
     }
 };
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
+
 var enemy1 = new RightEnemy(50, 50, 20);
 var enemy2 = new RightEnemy(700, 50, 20);
 var enemy3 = new LeftEnemy(500, 100, 20);
@@ -179,11 +154,7 @@ var allEnemies = [enemy1, enemy3, enemy5, enemy7];
 
 var player = new Player();
 
-
-
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function(e) {
+document.addEventListener('keyup', function(e) { // Player controls
     var allowedKeys = {
         37: 'left',
         38: 'up',
